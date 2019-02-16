@@ -6,6 +6,8 @@
 
 2019-02-16 13:08 - Phew! Finally got my Docker setup working and I'm ready to start coding. I'm going to be creating JEST using PHP and the Lumen framework, with a MySQL backend.  Ready to kick things off.  Gonna start by getting my database schema in place.
 
+2019-02-16 13:20 - Actually, needed to get my Github set up. So now I'm all connected up and ready to develop!
+
 
 
 
