@@ -14,3 +14,11 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->group(['prefix' => 'api'], function () use ($router) {
+  $router->get('sightings',  ['uses' => 'SightingController@showAllSightings']);
+  $router->get('sightings/{id}', ['uses' => 'SightingController@showOneSighting']);
+  $router->post('sightings', ['uses' => 'SightingController@create']);
+  $router->delete('sightings/{id}', ['uses' => 'SightingController@delete']);
+  $router->put('sightings/{id}', ['uses' => 'SightingController@update']);
+});

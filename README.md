@@ -8,7 +8,15 @@
 
 2019-02-16 13:20 - Actually, needed to get my Github set up. So now I'm all connected up and ready to develop!
 
+2019-02-16 13:53 - Basic schema and migration working. Starting on the manage sightings stuff - model, routes, controller, etc
 
+2019-02-16 14:02 - Aah! Migration worked, but no db connection from the API. PDO_mysql doesn't seem to be installed? Checking further into what's going on here...
+
+2019-02-16 14:10 - Got PDO_mysql added to the Dockerfile, but the API still doesn't want to connect to the db.  Command line works fine, but getting "Connection Refused" now in the API code
+
+2019-02-16 14:18 - Break time. 1 hour, 10 minutes worked so far.
+
+2019-02-16 16:52 - Back at it!  Still trying to figure out why the API can't connect to the database
 
 
 
