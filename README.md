@@ -22,6 +22,8 @@
 
 2019-02-16 22:09 - Holy crap it finally works. No one ever ended up responding to the Stack Overflow, but I found a Lumen / Docker / MySQL tutorial online and I've finally got a connection to the database.  I'm going to just call that all Docker work because I certainly didn't make any progress on the code since 2:00pm.  OK.  Kids are in bed and the connections are working.  Time to bang out some code.
 
+2019-02-16 23:13 - Sightings API calls are coming along. GET works for one or all sightings. POST works to create a new sighting.  PUT works to update an existing sighting. And DELETE works to get rid of one. No validation yet, but the basics are there.
+
 
 
 
