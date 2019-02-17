@@ -7,8 +7,8 @@ namespace Composer\Autoload;
 class ComposerStaticInit8195cb869caee1710d8a273f3d6168a0
 {
     public static $files = array (
-        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '72579e7bd17821bb1321b87411366eae' => __DIR__ . '/..' . '/illuminate/support/helpers.php',
         '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
@@ -86,6 +86,12 @@ class ComposerStaticInit8195cb869caee1710d8a273f3d6168a0
             'Illuminate\\Bus\\' => 15,
             'Illuminate\\Broadcasting\\' => 24,
             'Illuminate\\Auth\\' => 16,
+        ),
+        'G' => 
+        array (
+            'Grimzy\\LaravelMysqlSpatial\\' => 27,
+            'GeoIO\\WKB\\Parser\\' => 17,
+            'GeoIO\\' => 6,
         ),
         'F' => 
         array (
@@ -288,6 +294,18 @@ class ComposerStaticInit8195cb869caee1710d8a273f3d6168a0
         array (
             0 => __DIR__ . '/..' . '/illuminate/auth',
         ),
+        'Grimzy\\LaravelMysqlSpatial\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/grimzy/laravel-mysql-spatial/src',
+        ),
+        'GeoIO\\WKB\\Parser\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/geo-io/wkb-parser/src',
+        ),
+        'GeoIO\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/geo-io/interface/src',
+        ),
         'FastRoute\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/fast-route/src',
@@ -341,6 +359,13 @@ class ComposerStaticInit8195cb869caee1710d8a273f3d6168a0
                 0 => __DIR__ . '/..' . '/mockery/mockery/library',
             ),
         ),
+        'G' => 
+        array (
+            'GeoJson\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/jmikola/geojson/src',
+            ),
+        ),
     );
 
     public static $classMap = array (
@@ -350,6 +375,7 @@ class ComposerStaticInit8195cb869caee1710d8a273f3d6168a0
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\ExampleController' => __DIR__ . '/../..' . '/app/Http/Controllers/ExampleController.php',
+        'App\\Http\\Controllers\\SightingController' => __DIR__ . '/../..' . '/app/Http/Controllers/SightingController.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\ExampleMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/ExampleMiddleware.php',
         'App\\Jobs\\ExampleJob' => __DIR__ . '/../..' . '/app/Jobs/ExampleJob.php',
@@ -358,6 +384,7 @@ class ComposerStaticInit8195cb869caee1710d8a273f3d6168a0
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
+        'App\\Sighting' => __DIR__ . '/../..' . '/app/Sighting.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonInterval' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
@@ -866,6 +893,65 @@ class ComposerStaticInit8195cb869caee1710d8a273f3d6168a0
         'FastRoute\\RouteCollector' => __DIR__ . '/..' . '/nikic/fast-route/src/RouteCollector.php',
         'FastRoute\\RouteParser' => __DIR__ . '/..' . '/nikic/fast-route/src/RouteParser.php',
         'FastRoute\\RouteParser\\Std' => __DIR__ . '/..' . '/nikic/fast-route/src/RouteParser/Std.php',
+        'GeoIO\\Dimension' => __DIR__ . '/..' . '/geo-io/interface/src/Dimension.php',
+        'GeoIO\\Extractor' => __DIR__ . '/..' . '/geo-io/interface/src/Extractor.php',
+        'GeoIO\\Factory' => __DIR__ . '/..' . '/geo-io/interface/src/Factory.php',
+        'GeoIO\\WKB\\Parser\\Exception\\Exception' => __DIR__ . '/..' . '/geo-io/wkb-parser/src/Exception/Exception.php',
+        'GeoIO\\WKB\\Parser\\Exception\\ParserException' => __DIR__ . '/..' . '/geo-io/wkb-parser/src/Exception/ParserException.php',
+        'GeoIO\\WKB\\Parser\\Parser' => __DIR__ . '/..' . '/geo-io/wkb-parser/src/Parser.php',
+        'GeoIO\\WKB\\Parser\\Scanner' => __DIR__ . '/..' . '/geo-io/wkb-parser/src/Scanner.php',
+        'GeoJson\\BoundingBox' => __DIR__ . '/..' . '/jmikola/geojson/src/GeoJson/BoundingBox.php',
+        'GeoJson\\CoordinateReferenceSystem\\CoordinateReferenceSystem' => __DIR__ . '/..' . '/jmikola/geojson/src/GeoJson/CoordinateReferenceSystem/CoordinateReferenceSystem.php',
+        'GeoJson\\CoordinateReferenceSystem\\Linked' => __DIR__ . '/..' . '/jmikola/geojson/src/GeoJson/CoordinateReferenceSystem/Linked.php',
+        'GeoJson\\CoordinateReferenceSystem\\Named' => __DIR__ . '/..' . '/jmikola/geojson/src/GeoJson/CoordinateReferenceSystem/Named.php',
+        'GeoJson\\Exception\\Exception' => __DIR__ . '/..' . '/jmikola/geojson/src/GeoJson/Exception/Exception.php',
+        'GeoJson\\Exception\\UnserializationException' => __DIR__ . '/..' . '/jmikola/geojson/src/GeoJson/Exception/UnserializationException.php',
+        'GeoJson\\Feature\\Feature' => __DIR__ . '/..' . '/jmikola/geojson/src/GeoJson/Feature/Feature.php',
+        'GeoJson\\Feature\\FeatureCollection' => __DIR__ . '/..' . '/jmikola/geojson/src/GeoJson/Feature/FeatureCollection.php',
+        'GeoJson\\GeoJson' => __DIR__ . '/..' . '/jmikola/geojson/src/GeoJson/GeoJson.php',
+        'GeoJson\\Geometry\\Geometry' => __DIR__ . '/..' . '/jmikola/geojson/src/GeoJson/Geometry/Geometry.php',
+        'GeoJson\\Geometry\\GeometryCollection' => __DIR__ . '/..' . '/jmikola/geojson/src/GeoJson/Geometry/GeometryCollection.php',
+        'GeoJson\\Geometry\\LineString' => __DIR__ . '/..' . '/jmikola/geojson/src/GeoJson/Geometry/LineString.php',
+        'GeoJson\\Geometry\\LinearRing' => __DIR__ . '/..' . '/jmikola/geojson/src/GeoJson/Geometry/LinearRing.php',
+        'GeoJson\\Geometry\\MultiLineString' => __DIR__ . '/..' . '/jmikola/geojson/src/GeoJson/Geometry/MultiLineString.php',
+        'GeoJson\\Geometry\\MultiPoint' => __DIR__ . '/..' . '/jmikola/geojson/src/GeoJson/Geometry/MultiPoint.php',
+        'GeoJson\\Geometry\\MultiPolygon' => __DIR__ . '/..' . '/jmikola/geojson/src/GeoJson/Geometry/MultiPolygon.php',
+        'GeoJson\\Geometry\\Point' => __DIR__ . '/..' . '/jmikola/geojson/src/GeoJson/Geometry/Point.php',
+        'GeoJson\\Geometry\\Polygon' => __DIR__ . '/..' . '/jmikola/geojson/src/GeoJson/Geometry/Polygon.php',
+        'GeoJson\\JsonUnserializable' => __DIR__ . '/..' . '/jmikola/geojson/src/GeoJson/JsonUnserializable.php',
+        'Grimzy\\LaravelMysqlSpatial\\Connectors\\ConnectionFactory' => __DIR__ . '/..' . '/grimzy/laravel-mysql-spatial/src/Connectors/ConnectionFactory.php',
+        'Grimzy\\LaravelMysqlSpatial\\Doctrine\\Geometry' => __DIR__ . '/..' . '/grimzy/laravel-mysql-spatial/src/Doctrine/Geometry.php',
+        'Grimzy\\LaravelMysqlSpatial\\Doctrine\\GeometryCollection' => __DIR__ . '/..' . '/grimzy/laravel-mysql-spatial/src/Doctrine/GeometryCollection.php',
+        'Grimzy\\LaravelMysqlSpatial\\Doctrine\\LineString' => __DIR__ . '/..' . '/grimzy/laravel-mysql-spatial/src/Doctrine/LineString.php',
+        'Grimzy\\LaravelMysqlSpatial\\Doctrine\\MultiLineString' => __DIR__ . '/..' . '/grimzy/laravel-mysql-spatial/src/Doctrine/MultiLineString.php',
+        'Grimzy\\LaravelMysqlSpatial\\Doctrine\\MultiPoint' => __DIR__ . '/..' . '/grimzy/laravel-mysql-spatial/src/Doctrine/MultiPoint.php',
+        'Grimzy\\LaravelMysqlSpatial\\Doctrine\\MultiPolygon' => __DIR__ . '/..' . '/grimzy/laravel-mysql-spatial/src/Doctrine/MultiPolygon.php',
+        'Grimzy\\LaravelMysqlSpatial\\Doctrine\\Point' => __DIR__ . '/..' . '/grimzy/laravel-mysql-spatial/src/Doctrine/Point.php',
+        'Grimzy\\LaravelMysqlSpatial\\Doctrine\\Polygon' => __DIR__ . '/..' . '/grimzy/laravel-mysql-spatial/src/Doctrine/Polygon.php',
+        'Grimzy\\LaravelMysqlSpatial\\Eloquent\\BaseBuilder' => __DIR__ . '/..' . '/grimzy/laravel-mysql-spatial/src/Eloquent/BaseBuilder.php',
+        'Grimzy\\LaravelMysqlSpatial\\Eloquent\\Builder' => __DIR__ . '/..' . '/grimzy/laravel-mysql-spatial/src/Eloquent/Builder.php',
+        'Grimzy\\LaravelMysqlSpatial\\Eloquent\\SpatialExpression' => __DIR__ . '/..' . '/grimzy/laravel-mysql-spatial/src/Eloquent/SpatialExpression.php',
+        'Grimzy\\LaravelMysqlSpatial\\Eloquent\\SpatialTrait' => __DIR__ . '/..' . '/grimzy/laravel-mysql-spatial/src/Eloquent/SpatialTrait.php',
+        'Grimzy\\LaravelMysqlSpatial\\Exceptions\\InvalidGeoJsonException' => __DIR__ . '/..' . '/grimzy/laravel-mysql-spatial/src/Exceptions/InvalidGeoJsonException.php',
+        'Grimzy\\LaravelMysqlSpatial\\Exceptions\\SpatialFieldsNotDefinedException' => __DIR__ . '/..' . '/grimzy/laravel-mysql-spatial/src/Exceptions/SpatialFieldsNotDefinedException.php',
+        'Grimzy\\LaravelMysqlSpatial\\Exceptions\\UnknownSpatialRelationFunction' => __DIR__ . '/..' . '/grimzy/laravel-mysql-spatial/src/Exceptions/UnknownSpatialRelationFunction.php',
+        'Grimzy\\LaravelMysqlSpatial\\Exceptions\\UnknownWKTTypeException' => __DIR__ . '/..' . '/grimzy/laravel-mysql-spatial/src/Exceptions/UnknownWKTTypeException.php',
+        'Grimzy\\LaravelMysqlSpatial\\MysqlConnection' => __DIR__ . '/..' . '/grimzy/laravel-mysql-spatial/src/MysqlConnection.php',
+        'Grimzy\\LaravelMysqlSpatial\\Schema\\Blueprint' => __DIR__ . '/..' . '/grimzy/laravel-mysql-spatial/src/Schema/Blueprint.php',
+        'Grimzy\\LaravelMysqlSpatial\\Schema\\Builder' => __DIR__ . '/..' . '/grimzy/laravel-mysql-spatial/src/Schema/Builder.php',
+        'Grimzy\\LaravelMysqlSpatial\\Schema\\Grammars\\MySqlGrammar' => __DIR__ . '/..' . '/grimzy/laravel-mysql-spatial/src/Schema/Grammars/MySqlGrammar.php',
+        'Grimzy\\LaravelMysqlSpatial\\SpatialServiceProvider' => __DIR__ . '/..' . '/grimzy/laravel-mysql-spatial/src/SpatialServiceProvider.php',
+        'Grimzy\\LaravelMysqlSpatial\\Types\\Factory' => __DIR__ . '/..' . '/grimzy/laravel-mysql-spatial/src/Types/Factory.php',
+        'Grimzy\\LaravelMysqlSpatial\\Types\\Geometry' => __DIR__ . '/..' . '/grimzy/laravel-mysql-spatial/src/Types/Geometry.php',
+        'Grimzy\\LaravelMysqlSpatial\\Types\\GeometryCollection' => __DIR__ . '/..' . '/grimzy/laravel-mysql-spatial/src/Types/GeometryCollection.php',
+        'Grimzy\\LaravelMysqlSpatial\\Types\\GeometryInterface' => __DIR__ . '/..' . '/grimzy/laravel-mysql-spatial/src/Types/GeometryInterface.php',
+        'Grimzy\\LaravelMysqlSpatial\\Types\\LineString' => __DIR__ . '/..' . '/grimzy/laravel-mysql-spatial/src/Types/LineString.php',
+        'Grimzy\\LaravelMysqlSpatial\\Types\\MultiLineString' => __DIR__ . '/..' . '/grimzy/laravel-mysql-spatial/src/Types/MultiLineString.php',
+        'Grimzy\\LaravelMysqlSpatial\\Types\\MultiPoint' => __DIR__ . '/..' . '/grimzy/laravel-mysql-spatial/src/Types/MultiPoint.php',
+        'Grimzy\\LaravelMysqlSpatial\\Types\\MultiPolygon' => __DIR__ . '/..' . '/grimzy/laravel-mysql-spatial/src/Types/MultiPolygon.php',
+        'Grimzy\\LaravelMysqlSpatial\\Types\\Point' => __DIR__ . '/..' . '/grimzy/laravel-mysql-spatial/src/Types/Point.php',
+        'Grimzy\\LaravelMysqlSpatial\\Types\\PointCollection' => __DIR__ . '/..' . '/grimzy/laravel-mysql-spatial/src/Types/PointCollection.php',
+        'Grimzy\\LaravelMysqlSpatial\\Types\\Polygon' => __DIR__ . '/..' . '/grimzy/laravel-mysql-spatial/src/Types/Polygon.php',
         'Hamcrest\\Arrays\\IsArray' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArray.php',
         'Hamcrest\\Arrays\\IsArrayContaining' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContaining.php',
         'Hamcrest\\Arrays\\IsArrayContainingInAnyOrder' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContainingInAnyOrder.php',
