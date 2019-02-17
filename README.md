@@ -24,7 +24,7 @@
 
 2019-02-16 23:13 - Sightings API calls are coming along. GET works for one or all sightings. POST works to create a new sighting.  PUT works to update an existing sighting. And DELETE works to get rid of one. No validation yet, but the basics are there.
 
-
+2019-02-16 23:58 - Time to go to sleep. Got some good work done on tags, but will need to pick it up in the morning. At about 3 hours.
 
 
 

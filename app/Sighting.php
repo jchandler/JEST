@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Tag;
 use Illuminate\Database\Eloquent\Model;
 use Grimzy\LaravelMysqlSpatial\Types\Point;
 use Grimzy\LaravelMysqlSpatial\Eloquent\SpatialTrait;
@@ -30,6 +31,14 @@ class Sighting extends Model
     protected $spatialFields = [
         'position'
     ];
+
+   /**
+     * The tags that belong to the sighting.
+     */
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
 
     /**
      * Extending the create function in order to take Lat / Long and put it into a Point field in the db
