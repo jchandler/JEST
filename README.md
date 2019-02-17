@@ -18,7 +18,9 @@
 
 2019-02-16 16:52 - Back at it!  Still trying to figure out why the API can't connect to the database
 
+2019-02-16 17:50 - This "Connection Refused" thing is killing me. This is still docker-related trouble, I think. So I've posted on Stack Overflow, which hopefully doesn't bend the rules too much.  If I can't get this figured out I'm going to have to start over.  If I need extra time, I'm planning to not count this hour of banging my head against the wall.  Hopefully this is fine.  I'm going to rest my brain and hopefully someone will respond to my question...
 
+2019-02-16 22:09 - Holy crap it finally works. No one ever ended up responding to the Stack Overflow, but I found a Lumen / Docker / MySQL tutorial online and I've finally got a connection to the database.  I'm going to just call that all Docker work because I certainly didn't make any progress on the code since 2:00pm.  OK.  Kids are in bed and the connections are working.  Time to bang out some code.
 
 
 

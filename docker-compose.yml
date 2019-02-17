@@ -7,22 +7,21 @@ services:
     image: laravel-docker
     ports:
       - 8080:80
-    depends_on:
-      - mysqldb
+    links:
+      - mysql
     volumes:
       - .:/srv/app
-    # container_name:
-  mysqldb:
-    image: mysql:5.7
-    container_name: mysqldb
-    command: mysqld --user=root --verbose
-    volumes:
-       - ./schemadump.sql:/docker-entrypoint-initdb.d/schemadump.sql
-    ports:
-      - "3306:3306"
     environment:
-      MYSQL_DATABASE: "sasquatch"
-      MYSQL_USER: "sasquatch"
-      MYSQL_PASSWORD: "sasquatch"
-      MYSQL_ROOT_PASSWORD: "root"
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      DB_HOST: mysql
+      DB_DATABASE: laravel_docker
+      DB_USERNAME: app
+      DB_PASSWORD: password
+  mysql:
+    image: mysql:5.7
+    ports:
+      - 13306:3306
+    environment:
+      MYSQL_DATABASE: laravel_docker
+      MYSQL_USER: app
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
