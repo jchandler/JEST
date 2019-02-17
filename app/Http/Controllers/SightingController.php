@@ -13,7 +13,7 @@ class SightingController extends Controller
         return response()->json(Sighting::all());
     }
 
-    public function showOneAuthor($id)
+    public function showOneSighting($id)
     {
         return response()->json(Sighting::find($id));
     }

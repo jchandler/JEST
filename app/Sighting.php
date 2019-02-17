@@ -41,4 +41,16 @@ class Sighting extends Model
         $model = static::query()->create($attributes);
         return $model;
     }
+
+    /**
+     * Extending the update function in order to take Lat / Long and put it into a Point field in the db
+     */
+    public function update(array $attributes = [], array $options = [])
+    {
+        $attributes['position'] = new Point($attributes['latitude'], $attributes['longitude']); 
+
+        return $this->fill($attributes)->save();
+    }
+
+
 }
