@@ -21,4 +21,6 @@ $router->group(['prefix' => 'api'], function () use ($router) {
   $router->post('sightings', ['uses' => 'SightingController@create']);
   $router->delete('sightings/{id}', ['uses' => 'SightingController@delete']);
   $router->put('sightings/{id}', ['uses' => 'SightingController@update']);
+
+  $router->get('sightings/distance/{id1}/{id2}', ['uses' => 'SightingController@distanceBetweenTwo']);
 });

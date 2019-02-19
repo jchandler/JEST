@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\Tag;
 use App\Sighting;
 use Illuminate\Http\Request;
@@ -24,7 +25,7 @@ class SightingController extends Controller
             }
             $tempTags = [];
         }
-        return response()->json($sightings);
+        return response()->json($sightings, 200);
     }
 
     public function showOneSighting($id)
@@ -40,7 +41,7 @@ class SightingController extends Controller
             $sighting->tags = '';
         }
 
-        return response()->json($sighting);
+        return response()->json($sighting, 200);
     }
 
     public function create(Request $request)
@@ -74,4 +75,28 @@ class SightingController extends Controller
         ];
         return response($return, 200);
     }
+
+    public function distanceBetweenTwo($id1, $id2)
+    {
+        $sighting1 = Sighting::find($id1);
+        $sighting2 = Sighting::find($id2);
+
+        if (empty($sighting1) || empty($sighting2)) {
+            $return = [
+                'success' => false,
+                'message' => 'One or more of those sightings does not exist. Do not try to fool the Sasquatch!'
+            ];
+        } else {
+            $return = 
+                Sighting::select(
+                    DB::raw('ST_Distance((SELECT position FROM sightings WHERE id = ?), (SELECT position FROM sightings WHERE id = ?)) AS distance'))
+                ->setBindings([$id1, $id2])
+                ->first();
+        }
+
+        return response()->json($return, 200);
+    }
+
+
+
 }

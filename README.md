@@ -30,6 +30,8 @@
 
 2019-02-18 21:26 - Tags looking pretty good. GET,POST and PUT working.
 
+2019-02-18 21:59 - Got the distance endpoint working.  These endpoints are all super bare bones.
+
 
 
 
