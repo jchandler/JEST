@@ -56,8 +56,10 @@ The time restriction seemed long at first, but quickly disappeared and I found m
 
 ### Things I didn't spend time on, but would always do before launching an API or passing the code to anyone else
 
+* Linting: I didn't set up a linter to reformat code into PSR-2
 * Validation: The API doesn't validate parameters coming in to make sure the values are appropriate
 * Documentation: The controller functions don't have docblocks or comments
+* Code Reuse: The controller has a section of code attaching tags to sightings that I could have pulled out into a separate function
 * Indexing: For high load requests and especially the geospatial stuff I would have spent time tweaking db indexes
 * Conversion to miles: Realized while typing up documentation that the API isn't converting (lat/long units) into miles or km. Without having a chance to test, I believe that I would just have to change the one Grimzy command from `Sighting::distance` to `Sighting::distanceSphere`, and then the raw DB call from `ST_Distance` to `ST_Distance_Sphere`
 
