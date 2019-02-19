@@ -32,6 +32,8 @@
 
 2019-02-18 21:59 - Got the distance endpoint working.  These endpoints are all super bare bones.
 
+2019-02-18 22:44 - Tag search has a bug, so I quickly did the find within distance endpoint.  Five more minutes on tag search, I may have to bag it.
+
 
 
 

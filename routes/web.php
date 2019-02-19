@@ -23,4 +23,8 @@ $router->group(['prefix' => 'api'], function () use ($router) {
   $router->put('sightings/{id}', ['uses' => 'SightingController@update']);
 
   $router->get('sightings/distance/{id1}/{id2}', ['uses' => 'SightingController@distanceBetweenTwo']);
+
+  $router->get('sightings/tagsearch/{tag_text}', ['uses' => 'SightingController@tagSearch']);
+
+  $router->get('sightings/within/{id}/{distance}', ['uses' => 'SightingController@withinDistance']);
 });
