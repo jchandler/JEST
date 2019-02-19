@@ -34,6 +34,8 @@
 
 2019-02-18 22:44 - Tag search has a bug, so I quickly did the find within distance endpoint.  Five more minutes on tag search, I may have to bag it.
 
+2019-02-18 22:51 - OK, well, times up.  I got the tag search working one way but not the other.  Going to commit once more and then write up results.
+
 
 
 

@@ -107,12 +107,10 @@ class SightingController extends Controller
 
     public function tagSearch($tag_text)
     {
-        $tagIds = Tag::whereIn('tag_text', explode(',', $tag_text))->pluck('id')->toArray();
-        if (!empty($tagIds)) {
-            $sightings = Sighting::whereHas('tags', function($q) use($tagIds) {
-                $q->find($tagIds);
-            });
-        }
+        $sightings = Sighting::whereHas('tags', function($q) use($tag_text) {
+            $q->whereIn('tag_text', explode(',', $tag_text));
+        })->get();
+
         if (!empty($sightings)) {
             foreach ($sightings as $sighting) {
                 foreach ($sighting->tags as $tag) {
