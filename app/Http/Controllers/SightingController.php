@@ -11,17 +11,28 @@ class SightingController extends Controller
 
     public function showAllSightings()
     {
-        return response()->json(Sighting::all());
+        $sightings = Sighting::all();
+        foreach ($sightings as $sighting) {
+            foreach ($sighting->tags as $tag) {
+                $tempTags[] = $tag->tag_text;
+            }
+            unset($sighting->tags);
+            $sighting->tags = implode(",", $tempTags);
+            $tempTags = [];
+        }
+        return response()->json($sightings);
     }
 
     public function showOneSighting($id)
     {
         $sighting = Sighting::find($id);
-        foreach ($sighting->tags() as $tag) {
-            var_dump($tag);
+        foreach ($sighting->tags as $tag) {
+            $tempTags[] = $tag->tag_text;
         }
+        unset($sighting->tags);
+        $sighting->tags = implode(",", $tempTags);
 
-        return response()->json(Sighting::find($id));
+        return response()->json($sighting);
     }
 
     public function create(Request $request)

@@ -26,6 +26,10 @@
 
 2019-02-16 23:58 - Time to go to sleep. Got some good work done on tags, but will need to pick it up in the morning. At about 3 hours.
 
+2019-02-18 20:50 - Ready to finish up.  Need to get these tags working so I can move on to the fun geospatial stuff
+
+
+
 
 
 
