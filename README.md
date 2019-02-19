@@ -28,7 +28,7 @@
 
 2019-02-18 20:50 - Ready to finish up.  Need to get these tags working so I can move on to the fun geospatial stuff
 
-
+2019-02-18 21:26 - Tags looking pretty good. GET,POST and PUT working.
 
 
 

@@ -48,6 +48,15 @@ class Sighting extends Model
         $attributes['position'] = new Point($attributes['latitude'], $attributes['longitude']); 
 
         $model = static::query()->create($attributes);
+
+        if (isset($attributes['tags'])) {
+            $tags = explode(',', $attributes['tags']);
+            foreach ($tags as $tag) {
+                $newtag = Tag::firstOrCreate(['tag_text' => $tag]);
+                $model->tags()->attach($newtag);
+            }
+        }
+
         return $model;
     }
 
@@ -56,9 +65,21 @@ class Sighting extends Model
      */
     public function update(array $attributes = [], array $options = [])
     {
-        $attributes['position'] = new Point($attributes['latitude'], $attributes['longitude']); 
+        if (isset($attributes['latitude']) && isset($attributes['longitude'])) {
+            $attributes['position'] = new Point($attributes['latitude'], $attributes['longitude']); 
+        }
+        $this->fill($attributes)->save();
 
-        return $this->fill($attributes)->save();
+        if (isset($attributes['tags'])) {
+            $this->tags()->detach();
+            $tags = explode(',', $attributes['tags']);
+            foreach ($tags as $tag) {
+                $newtag = Tag::firstOrCreate(['tag_text' => $tag]);
+                $this->tags()->attach($newtag);
+            }
+        }
+
+        return true;
     }
 
 

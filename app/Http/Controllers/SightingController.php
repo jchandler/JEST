@@ -17,7 +17,11 @@ class SightingController extends Controller
                 $tempTags[] = $tag->tag_text;
             }
             unset($sighting->tags);
-            $sighting->tags = implode(",", $tempTags);
+            if (!empty($tempTags)) {
+                $sighting->tags = implode(",", $tempTags);
+            } else {
+                $sighting->tags = '';
+            }
             $tempTags = [];
         }
         return response()->json($sightings);
@@ -30,37 +34,44 @@ class SightingController extends Controller
             $tempTags[] = $tag->tag_text;
         }
         unset($sighting->tags);
-        $sighting->tags = implode(",", $tempTags);
+        if (!empty($tempTags)) {
+            $sighting->tags = implode(",", $tempTags);
+        } else {
+            $sighting->tags = '';
+        }
 
         return response()->json($sighting);
     }
 
     public function create(Request $request)
     {
-        $tags = explode(',', $request->tags);
-        unset($request->tags);
-
         $sighting = Sighting::create($request->all());
-
-        foreach ($tags as $tag) {
-            $newtag = Tag::firstOrNew(['tag_text' => $tag]);
-            $sighting->tags()->attach($newtag);
-        }
-
-        return response()->json($sighting, 201);
+        $return = [
+            'success' => true,
+            'message' => 'Sighting has been successfully created. Congratulations on catching a glimpse of the elusive and majestic Sasquatch!'
+        ];
+        return response()->json($return, 201);
     }
 
     public function update($id, Request $request)
     {
         $sighting = Sighting::findOrFail($id);
         $sighting->update($request->all());
+        $return = [
+            'success' => true,
+            'message' => 'Sighting successfully updated. Thank you for your contribution and Hail Sasquatch!'
+        ];
 
-        return response()->json($sighting, 200);
+        return response()->json($return, 200);
     }
 
     public function delete($id)
     {
         Sighting::findOrFail($id)->delete();
-        return response('Deleted Successfully', 200);
+        $return = [
+            'success' => true,
+            'message' => 'Sighting deleted. Only the truly blessed have actually seen the great Sasquatch.'
+        ];
+        return response($return, 200);
     }
 }
