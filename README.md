@@ -2,6 +2,65 @@
 
 ## How to Use
 
+The final project JEST consists of 8 distinct endpoints (if you count different methods of hitting the same URL as different endpoints). The base URL for all endpoints, once the Docker container is running, should be:
+
+`http://localhost:8080/api/sightings/`
+
+The first five are the CRUD endpoints for Sightings.  I used GET for all endpoints that pull data, POST for creates, PUT for updates, and DELETE for deletes.  The other three are all GET endpoints that pull back Sightings data in different ways.  Here are examples for each:
+
+`GET: http://localhost:8080/api/sightings/`
+Should return all sightings and their data
+
+`GET: http://localhost:8080/api/sightings/1`
+Should return data for a single sighting. In this case, the one with `ID=1`
+
+`POST: http://localhost:8080/api/sightings/`
+This request should contain `form-data` with key-value pairs as defined below. If properly filled out, a new sighting should be created.
+
+Parameters
+* description (a string describing the sasquatch sighting)
+* sighted_at (a date of the sighting, in this format: "2019-01-01 23:59:59")
+* latitude (a float value of the latitude of the sighting location)
+* longitude (a float value of the longitude of the sighting location)
+* tags (a string with comma-separated tags, describing the sasquatch)
+
+`PUT: http://localhost:8080/api/sightings/1`
+This request should contain `x-www-form-urlencoded` with key-value pairs as defined above, the same as the POST.  If properly filled out, the sighting with `ID=1` should be updated with the new information.
+
+`DELETE: http://localhost:8080/api/sightings/1`
+This request should Delete the Sighting with `ID=1`, if it exists. 
+
+`GET: http://localhost:8080/api/sightings/distance/1/2`
+Should return the distance between the two sightings. And I JUST REALIZED as I'm typing this that the units of distance are latitude / longitude units. I didn't do the correct GeoSpatial calculations to get results in miles or km.
+
+`GET: http://localhost:8080/api/sightings/tagsearch/brown,furry`
+Should return sightings that are tagged either brown, furry, or both. Ran out of time for the option to require both.
+
+`GET: http://localhost:8080/api/sightings/within/1/10`
+Should return sightings within 10 units of the sighting with `ID=1`. Again this is using a bad unit of distance...
+
+## Final Thoughts
+
+This was a fun project, although the Docker setup was a bit frustrating. This was my first time using Docker.  I have mostly worked with Vagrant.  I chose to use the Lumen PHP framework, as I'm familiar with it, and it runs very fast.  
+
+The time restriction seemed long at first, but quickly disappeared and I found myself having to choose between things to get done.  I don't think my choices reflect priorities in an actual job. So in that way maybe this project result isn't perfectly representative of how I work.  With time restricted I chose some parts that were more fun over parts that are important but less fun.  In retrospect, I should have stopped a half hour early and spent time on documentation and validation.  Oh well!
+
+### Things I spent time on
+
+* Lumen setup: Tried to properly set up migrations, models, routes and controllers
+* Functionality: Wanted to get through as many endpoints as I could
+* Testing: Wanted to try to be sure that if proper values came into the API that it would do what it said
+* Messaging: Wanted user-friendly failure responses for some types of failures
+* GeoSpatial stuff: I like working with geospatial data and would have liked to have time to do more of the geo endpoints. I could have spent much more time investigating the Grimzy library I found
+* HTTP Response Codes: I only manually used 200 and 400 for successes and failures. 404 will be kicked off automatically by some of the eloquent query failures. And I believe 500 will be automatically used on any lingering code issues.  I could have probably done more here, but those cover the majority of cases.  
+
+### Things I didn't spend time on, but would always do before launching an API or passing the code to anyone else
+
+* Validation: The API doesn't validate parameters coming in to make sure the values are appropriate
+* Documentation: The controller functions don't have docblocks or comments
+* Indexing: For high load requests and especially the geospatial stuff I would have spent time tweaking db indexes
+* Conversion to miles: Realized while typing up documentation that the API isn't converting (lat/long units) into miles or km. Without having a chance to test, I believe that I would just have to change the one Grimzy command from `Sighting::distance` to `Sighting::distanceSphere`, and then the raw DB call from `ST_Distance` to `ST_Distance_Sphere`
+
 ## Development Notes
 
 2019-02-16 13:08 - Phew! Finally got my Docker setup working and I'm ready to start coding. I'm going to be creating JEST using PHP and the Lumen framework, with a MySQL backend.  Ready to kick things off.  Gonna start by getting my database schema in place.
@@ -36,123 +95,4 @@
 
 2019-02-18 22:51 - OK, well, times up.  I got the tag search working one way but not the other.  Going to commit once more and then write up results.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Backend Engineering Challenge
-
-Thank you for your interest in joining the backend team at Jolt! We are a hard working bunch that is eager to learn and implement new technologies while also being willing to maintain legacy code.
-
-***** **STOP** *****
-
-If you're not familiar with Docker, please spend some time before actually starting the challenge. It will not count against your time. It makes our job *so* much easier if we can simply run `docker-compose up` to run your project. Get familiar with Docker and then start the assessment. Once you're comfortable with working with a `docker-compose.yml` file and a `Dockerfile` file, please procede:
-
-You have five hours to make as much progress on the challenge as you can. We have designed the challenge so that it can't be completed in five hours, so please don't feel any stress to get it finished.
-
-## Guidelines
-* The purpose of this challenge is to help us evaluate your software engineering skills. We are looking for things like:
-  * How well you architect your project structure
-  * How well your solution might scale under heavy load and/or very large datasets
-  * Do you understand basic programming and database principles
-  * Do you understand best practices
-  * Can you write readable and maintainable code
-  * Can you research and implement new or unfamiliar concepts
-  * Can you clearly explain your thoughts, and document your code
-* You are allowed to use any non-human resource. Ex:
-  * **Allowed:**
-    * StackOverflow
-    * Google
-    * Reference code on Github, etc.
-  * **Not Allowed:**
-    * Chatting or calling your old boss
-    * Using the code of your friend who already took this assessment
-    * Using the code of someone who posted their solution on the internet
-
-## Deliverables
-Once you have completed the challenge (or used the allotted five hours), please fill out this Google form: http://bit.ly/sasquatch-sightings-submissions
-For the code file, please submit a compressed directory with:
-* Code
-* Completed Docker Compose file
-* Readme explaining your database schema, choice of technologies, any challenges, and the API URLs
-
-## The Challenge
-The "Society to Uncover and Spread the Truth" has hired you to build a backend to track Sasquatch sightings with an API to access this data. They need a system to track sightings, including some metadata about each sighting, and to provide some analytics to help them discover patterns.
-These are their requirements:
-
-* The database used to store the data should be a MySQL database
-* The API should follow REST or GraphQL best practices
-* The backend should be implemented in one of the following languages: NodeJS, PHP, Java
-* Frameworks: You are free to use any frameworks you feel are appropriate for the task. Also, keep in mind that this is your opportunity to show off your software engineering skill and experience.
-* The API should provide the following endpoints (please build these in this order)
-    1. Manage sightings
-        * Create new sightings, including:
-            * The exact location (latitude and logitude) of the sighting
-            * The time of the sighting
-            * The eye-witness's discription of the sighting
-            * A list of some short tags that are pertinent to the sighting, to the eye-witness, or to the geography (for example: "hill", "dark-brown", "cabbage-patch")
-        * Read
-            * All recorded sightings
-            * The details of a single sighting
-        * Update a recorded sighting by:
-            * Changing the location or description
-            * Adding or removing some tabs
-        * Delete a sighting
-    2. Distance
-        * Get the distance between two recorded sightings: API receives two sighting ids, then returns the distance between them
-    3. Search by tags. The client can send a list of one or more tags, and an additional parameter specifying that the API should return
-        * All sightings that match at least one of the tags in the search request, or
-        * All sightings that match all the the tags in the search request
-    4. Closest sightings (you can do these two in either order)
-        * Get all the recorded sightings within a given distance of a certain sighting: API recieves a sighting id and a distance, then returns a list of sightings that were within that distance
-        * Get the closest X number of sightings to a given sighting: API receives a sighting id and a number (10 for example), and returns the closest X sightings (closest 10 sightings)
-    5. Improve the "related sightings" endpoint from step 3. Add the ability for the client application and user to specify the following details (make these improvements in any order):
-        * The client can optionally include a list of tags, and the API should only return sightings that have those tags
-        * The client can specify that it only wants sightings that share all tags with the specified sighting
-        * The client can specify that it only wants sightings that share at least one tag with the specified sighting
-        * The client can optionally pass a date range (a start and end date), and the API should only return sightings in that range
-        * The client can optionally pass a date range forward/backward from the specified sighting, and the API should only include sightings in that date range
-    5. If you finish the tasks above (😳), feel free to make any further improvements, or just relax and submit the challenge
-
-When you reach the five hour mark, please stop what you are working on, comment out any unfinished code that breaks the application, and write the required documentation (specified in the Deliverables section).
-
-## Docker Instructions
-
-To simplify setup and to show that you understand (or can at least figure out) Docker, we expect a Docker Compose file that will spin up your backend and port forward so that we can hit your endpoints from localhost. We provide you with a docker compose YAML file that will spin up your MySQL database to help get you started.
-Instructions for docker compose:
-* Make sure docker is installed
-    * For Mac: https://www.docker.com/docker-mac
-    * For Windows: https://www.docker.com/docker-windows
-    * For Ubuntu: https://www.docker.com/docker-ubuntu
-* Make sure you're in the same directory as this readme
-* run `docker-compose up -d`
-    * This will create a container called mysqldb
-    * To verify it was created you can run `docker ps` -- it should show up in the list of containers
-* To tear down your environment you can run `docker-compose down` so that you can spin it from scratch as you make changes
-* In this same directory there is a schemadump.sql file which is where you should put the DDL for creating your schema. The database name is `test` which is consistent with what is specified in the docker-compose.yml file
-* The schemadump.sql script should automatically run when the pod spins up
-    * If you get an error like `ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)` then just wait a minute or two for mysql to fully initialize and then try again
-* To bash into your mysql container you can run `docker exec -it mysqldb bash` and you can either login to MySQL with user:root pass:root or user:test pass:test
-* Complete the docker-compose.yml file with your api service
-* Refer to https://docs.docker.com/compose/gettingstarted/ for the official Docker Compose tutorial
-
-## Sample Data
-
-If you want, you may use this sample data as you develop: http://bit.ly/sasquatch-sightings-data
-NOTE: The sample data is in TSV (not CSV format)
-
-## Feedback
-
-After you've completed and submitted the challenge, we'd love it if you would give us some feedback regarding the challenge, by filling out this form anonymously: http://bit.ly/sasquatch-feedback
-You can also come back and submit your feedback at a later time.
-
-Thanks!
+2019-02-18 23:43 - Just finishing up documentation and I'm going to copy my MySQL structure to that schemadump file so you don't have to run the migrations.

@@ -1,11 +1,13 @@
 # ************************************************************
 # Sequel Pro SQL dump
-# Version 4099
+# Version 4541
 #
 # http://www.sequelpro.com/
-# http://code.google.com/p/sequel-pro/
+# https://github.com/sequelpro/sequelpro
 #
-# Database: Dummy
+# Host: 127.0.0.1 (MySQL 5.7.25)
+# Database: laravel_docker
+# Generation Time: 2019-02-19 06:42:31 +0000
 # ************************************************************
 
 
@@ -17,20 +19,46 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-USE `sasquatch`;
 
-# Dump of table Car
+# Dump of table sighting_tag
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `Car`;
+DROP TABLE IF EXISTS `sighting_tag`;
 
-CREATE TABLE `Car` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `make` varchar(50) NOT NULL DEFAULT '',
-  `model` varchar(50) NOT NULL DEFAULT '',
-  `year` int(4) NOT NULL,
+CREATE TABLE `sighting_tag` (
+  `sighting_id` int(11) NOT NULL,
+  `tag_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+
+# Dump of table sightings
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `sightings`;
+
+CREATE TABLE `sightings` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `position` point NOT NULL,
+  `sighted_at` datetime NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+
+# Dump of table tags
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `tags`;
+
+CREATE TABLE `tags` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `tag_text` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 

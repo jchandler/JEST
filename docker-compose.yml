@@ -20,6 +20,9 @@ services:
     image: mysql:5.7
     ports:
       - 13306:3306
+    command: mysqld --user=root --verbose
+    volumes:
+       - ./schemadump.sql:/docker-entrypoint-initdb.d/schemadump.sql
     environment:
       MYSQL_DATABASE: laravel_docker
       MYSQL_USER: app
